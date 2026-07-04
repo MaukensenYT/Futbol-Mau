@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fútbol Mau</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }* {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }* {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #resetBallBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      cursor: pointer;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    #resetBallBtn:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    }
+
+    /* Dibujo simple de pelota usando CSS */
+    #resetBallBtn .ball {
+      width: 32px;
+      height: 32px;
+      background: white;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 0 8px #999,
+        0 0 4px #555;
+      position: relative;
+    }
+
+    #resetBallBtn .ball::before,
+    #resetBallBtn .ball::after {
+      content: "";
+      position: absolute;
+      background: black;
+      border-radius: 2px;
+    }
+
+    #resetBallBtn .ball::before {
+      top: 8px;
+      left: 6px;
+      width: 20px;
+      height: 4px;
+      transform: rotate(30deg);
+    }
+
+    #resetBallBtn .ball::after {
+      top: 20px;
+      left: 10px;
+      width: 10px;
+      height: 4px;
+      transform: rotate(-30deg);
+    }* {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }* {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }html, body {
+      margin: 0;
+      height: 100%;
+      background: #006400;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #goalText {
+      position: absolute;
+      font-size: 80px;
+      color: yellow;
+      font-weight: bold;
+      text-shadow: 3px 3px 5px black;
+      display: none;
+      z-index: 10;
+      pointer-events: none;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #1e7c25;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    canvas {
+      background: repeating-linear-gradient(
+        0deg,
+        #2e8b57,
+        #2e8b57 20px,
+        #3cb371 20px,
+        #3cb371 40px
+      );
+      display: block;
+    }
+    #menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      display: none;
+    }
+    #openMenuBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }html, body {
+      margin: 0; height: 100%;
+      background: #006400;
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas {
+      background: #228B22;
+      box-shadow: 0 0 20px #000;
+      display: block;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      user-select: none;
+      z-index: 20;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    #menu {
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 20;
+      max-width: 220px;
+    }
+
+    #menu h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    #countryList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .flagOption {
+      width: 40px;
+      height: 30px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      transition: border-color 0.2s;
+    }
+    .flagOption:hover {
+      border-color: #007bff;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: green;
+    }
+
+    #countryBtn, #restartBtn {
+      position: absolute;
+      top: 10px;
+      z-index: 10;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px 12px;
+    }
+
+    #countryBtn {
+      right: 10px;
+    }
+
+    #restartBtn {
+      left: 10px;
+    }
+
+    #menu {
+      position: absolute;
+      top: 50px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 10;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 160px;
+    }
+
+    .flagOption {
+      width: 50px;
+      height: 30px;
+      background-size: cover;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+  </style>
+
+  
+</head>
+<body>
+  <button id="countryBtn">⚽️ Elegir país</button>
+  <button id="restartBtn">🔄 Reiniciar</button>
+
+  <div id="menu">
+    <h3 id="menuTitle">Elige país para jugador 1</h3>
+    <div id="countryList"></div>
+  </div>
+
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const countryBtn = document.getElementById("countryBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const menu = document.getElementById("menu");
+    const menuTitle = document.getElementById("menuTitle");
+    const countryList = document.getElementById("countryList");
+
+    const fieldWidth = canvas.width;
+    const fieldHeight = canvas.height;
+
+    const playerSize = 30;
+    const ballSize = 25;
+
+    const player1 = { x: 50, y: fieldHeight / 2, flag: null, name: null, up: "w", down: "s", left: "a", right: "d" };
+    const player2 = { x: fieldWidth - 80, y: fieldHeight / 2, flag: null, name: null, up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight" };
+
+    const ball = { x: fieldWidth / 2, y: fieldHeight / 2, vx: 0, vy: 0 };
+
+    const arcoSuperior = fieldHeight / 2 - 50;
+    const arcoInferior = fieldHeight / 2 + 50;
+
+    const speed = 5;
+    const initialBallSpeed = 4;
+    const friction = 0.98;
+    const minSpeed = 0.3;
+
+    let keys = {};
+    let score1 = 0;
+    let score2 = 0;
+    let goalCooldown = false;
+    let selectingPlayer = 1;
+    let showStartMessage = true;
+
+    let gameStarted = false;
+    let gameOver = false;
+    let matchMinutes = 0;
+    let timer = 0;
+    const matchDuration = 90;
+    const secondsPerMinute = 1.5; // 1.5 segundos reales = 1 minuto del juego
+
+    const countries = [
+      { code: "es", name: "España", flag: "https://flagcdn.com/w80/es.png" },
+      { code: "us", name: "Estados Unidos", flag: "https://flagcdn.com/w80/us.png" },
+      { code: "fr", name: "Francia", flag: "https://flagcdn.com/w80/fr.png" },
+      { code: "de", name: "Alemania", flag: "https://flagcdn.com/w80/de.png" },
+      { code: "jp", name: "Japón", flag: "https://flagcdn.com/w80/jp.png" },
+      { code: "br", name: "Brasil", flag: "https://flagcdn.com/w80/br.png" },
+      { code: "ar", name: "Argentina", flag: "https://flagcdn.com/w80/ar.png" },
+      { code: "gb-eng", name: "Inglaterra", flag: "https://flagcdn.com/w80/gb-eng.png" },
+      { code: "it", name: "Italia", flag: "https://flagcdn.com/w80/it.png" },
+      { code: "mx", name: "México", flag: "https://flagcdn.com/w80/mx.png" },
+      { code: "co", name: "Colombia", flag: "https://flagcdn.com/w80/co.png" },
+      { code: "ma", name: "Marruecos", flag: "https://flagcdn.com/w80/ma.png" },
+      { code: "pt", name: "Portugal", flag: "https://flagcdn.com/w80/pt.png" },
+      { code: "nl", name: "Países Bajos", flag: "https://flagcdn.com/w80/nl.png" },
+      { code: "hr", name: "Croacia", flag: "https://flagcdn.com/w80/hr.png" },
+      { code: "be", name: "Bélgica", flag: "https://flagcdn.com/w80/be.png" },
+      { code: "ch", name: "Suiza", flag: "https://flagcdn.com/w80/ch.png" },
+      { code: "sn", name: "Senegal", flag: "https://flagcdn.com/w80/sn.png" },
+      { code: "ir", name: "Irán", flag: "https://flagcdn.com/w80/ir.png" },
+      { code: "uy", name: "Uruguay", flag: "https://flagcdn.com/w80/uy.png" },
+    ];
+
+    document.addEventListener("keydown", (e) => keys[e.key] = true);
+    document.addEventListener("keyup", (e) => keys[e.key] = false);
+
+    countryBtn.addEventListener("click", () => {
+      selectingPlayer = 1;
+      menuTitle.textContent = "Elige país para jugador 1";
+      populateCountryList();
+      menu.style.display = "block";
+    });
+
+    restartBtn.addEventListener("click", () => {
+      score1 = 0;
+      score2 = 0;
+      matchMinutes = 0;
+      timer = 0;
+      gameOver = false;
+      gameStarted = false;
+      showStartMessage = true;
+      player1.flag = null;
+      player2.flag = null;
+      player1.name = null;
+      player2.name = null;
+      resetBall();
+      resetPlayers();
+    });
+
+    function populateCountryList() {
+      countryList.innerHTML = "";
+      countries.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "flagOption";
+        div.title = c.name;
+        div.style.backgroundImage = `url(${c.flag})`;
+        div.addEventListener("click", () => selectCountry(c));
+        countryList.appendChild(div);
+      });
+    }
+
+    function selectCountry(country) {
+      if (selectingPlayer === 1) {
+        player1.flag = new Image();
+        player1.flag.src = country.flag;
+        player1.name = country.name;
+        selectingPlayer = 2;
+        menuTitle.textContent = "Elige país para jugador 2";
+      } else if (selectingPlayer === 2) {
+        player2.flag = new Image();
+        player2.flag.src = country.flag;
+        player2.name = country.name;
+        menu.style.display = "none";
+        gameStarted = true;
+        showStartMessage = false;
+      }
+    }
+
+    function resetPlayers() {
+      player1.x = 50;
+      player1.y = fieldHeight / 2;
+      player2.x = fieldWidth - 80;
+      player2.y = fieldHeight / 2;
+    }
+
+    function resetBall() {
+      ball.x = fieldWidth / 2;
+      ball.y = fieldHeight / 2;
+      ball.vx = 0;
+      ball.vy = 0;
+    }
+
+    function showGoalAnimation(whoScored, callback) {
+      goalCooldown = true;
+      ctx.font = "60px Arial";
+      ctx.textAlign = "center";
+      ctx.fillStyle = "white";
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 4;
+      ctx.strokeText(`¡GOOOL de ${whoScored}!`, fieldWidth / 2, fieldHeight / 2);
+      ctx.fillText(`¡GOOOL de ${whoScored}!`, fieldWidth / 2, fieldHeight / 2);
+      setTimeout(() => {
+        goalCooldown = false;
+        callback();
+      }, 1500);
+    }
+
+    function movePlayer(player) {
+      if (keys[player.up] && player.y > 0) player.y -= speed;
+      if (keys[player.down] && player.y + playerSize < fieldHeight) player.y += speed;
+      if (keys[player.left] && player.x > 0) player.x -= speed;
+      if (keys[player.right] && player.x + playerSize < fieldWidth) player.x += speed;
+    }
+
+    function updateBall() {
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+      ball.vx *= friction;
+      ball.vy *= friction;
+      if (Math.abs(ball.vx) < minSpeed) ball.vx = 0;
+      if (Math.abs(ball.vy) < minSpeed) ball.vy = 0;
+      if (ball.y <= 0 || ball.y >= fieldHeight) ball.vy *= -1;
+
+      if (ball.x <= 0 && ball.y >= arcoSuperior && ball.y <= arcoInferior) {
+        score2++;
+        const scorer = player2.name || "Jugador 2";
+        showGoalAnimation(scorer, () => {
+          resetBall();
+          resetPlayers();
+        });
+      } else if (ball.x >= fieldWidth && ball.y >= arcoSuperior && ball.y <= arcoInferior) {
+        score1++;
+        const scorer = player1.name || "Jugador 1";
+        showGoalAnimation(scorer, () => {
+          resetBall();
+          resetPlayers();
+        });
+      }
+
+      if ((ball.x <= 0 && (ball.y < arcoSuperior || ball.y > arcoInferior)) ||
+          (ball.x >= fieldWidth && (ball.y < arcoSuperior || ball.y > arcoInferior))) {
+        ball.vx *= -1;
+      }
+
+      if (ball.x <= 0) ball.x = 0;
+      if (ball.x >= fieldWidth) ball.x = fieldWidth;
+    }
+
+    function detectCollision(player) {
+      if (
+        ball.x + ballSize > player.x &&
+        ball.x < player.x + playerSize &&
+        ball.y + ballSize > player.y &&
+        ball.y < player.y + playerSize
+      ) {
+        let dx = (ball.x + ballSize / 2) - (player.x + playerSize / 2);
+        let dy = (ball.y + ballSize / 2) - (player.y + playerSize / 2);
+        let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        dx /= dist;
+        dy /= dist;
+        ball.vx = dx * initialBallSpeed;
+        ball.vy = dy * initialBallSpeed;
+      }
+    }
+
+    function drawTextWithBorder(text, x, y, size = "60px") {
+      ctx.font = `${size} Arial`;
+      ctx.textAlign = "center";
+      ctx.fillStyle = "white";
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 4;
+      ctx.strokeText(text, x, y);
+      ctx.fillText(text, x, y);
+    }
+
+    function drawField() {
+      ctx.fillStyle = "#2a7b2a";
+      ctx.fillRect(0, 0, fieldWidth, fieldHeight);
+
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(0, 0, fieldWidth, fieldHeight);
+
+      ctx.beginPath();
+      ctx.moveTo(fieldWidth / 2, 0);
+      ctx.lineTo(fieldWidth / 2, fieldHeight);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(fieldWidth / 2, fieldHeight / 2, 60, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(fieldWidth / 2, fieldHeight / 2, 10, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+
+      ctx.lineWidth = 7;
+      ctx.beginPath();
+      ctx.moveTo(0, arcoSuperior);
+      ctx.lineTo(0, arcoInferior);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(fieldWidth, arcoSuperior);
+      ctx.lineTo(fieldWidth, arcoInferior);
+      ctx.stroke();
+    }
+
+    function drawPlayer(player) {
+      if (player.flag && player.flag.complete) {
+        ctx.drawImage(player.flag, player.x, player.y, playerSize, playerSize);
+      } else {
+        ctx.fillStyle = "gray";
+        ctx.fillRect(player.x, player.y, playerSize, playerSize);
+      }
+    }
+
+    function drawBall() {
+      ctx.fillStyle = "white";
+      ctx.strokeStyle = "gray";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ballSize / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    }
+
+    function drawScore() {
+      ctx.fillStyle = "white";
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+      const p1Name = player1.name || "Jugador 1";
+      const p2Name = player2.name || "Jugador 2";
+      ctx.fillText(`${p1Name}: ${score1}`, fieldWidth / 4, 30);
+      ctx.fillText(`${p2Name}: ${score2}`, (fieldWidth / 4) * 3, 30);
+      ctx.fillText(`Tiempo: ${matchMinutes}'`, fieldWidth / 2, 30);
+    }
+
+    function gameLoop(timestamp) {
+      drawField();
+
+      if (showStartMessage) {
+        drawTextWithBorder("Elegir país", fieldWidth / 2, fieldHeight / 2);
+      }
+
+      if (!goalCooldown && gameStarted && !gameOver) {
+        timer += 1 / 60;
+        if (timer >= secondsPerMinute) {
+          matchMinutes++;
+          timer = 0;
+        }
+        if (matchMinutes >= matchDuration) {
+          gameOver = true;
+        }
+      }
+
+      if (!gameOver && gameStarted && !goalCooldown) {
+        movePlayer(player1);
+        movePlayer(player2);
+        updateBall();
+        detectCollision(player1);
+        detectCollision(player2);
+      }
+
+      drawPlayer(player1);
+      drawPlayer(player2);
+      drawBall();
+      drawScore();
+
+      if (gameOver) {
+        let result = "";
+        if (score1 > score2) result = `${player1.name || "Jugador 1"} gana`;
+        else if (score2 > score1) result = `${player2.name || "Jugador 2"} gana`;
+        else result = "Empate";
+        drawTextWithBorder(result, fieldWidth / 2, fieldHeight / 2);
+      }
+      document.addEventListener("keydown", (e) => {
+  keys[e.key] = true;
+
+  if (e.key.toLowerCase() === "g") {
+    resetBall();
+  }
+});
+
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    resetPlayers();
+    resetBall();
+    gameLoop();
+  </script>
+</body>
+</html>
